@@ -1,0 +1,27 @@
+ellipsis()
+  overflow hidden
+  white-space nowrap
+  text-overflow ellipsis
+
+.clearfix:after
+  content: "."
+  display: block
+  clear: both
+  visibility: hidden
+  height: 0
+  font-size:0
+
+.multilineEllipsis
+  position: relative;
+  line-height: 1.5em;
+  /*高度为需要显示的行数*行高，比如这里我们显示两行，则为3*/
+  height: 4.5em;
+  overflow: hidden;
+
+.multilineEllipsis:after {
+  content: '...';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #fff;
+}

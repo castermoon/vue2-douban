@@ -1,0 +1,63 @@
+{
+  "errno": 0,
+  "data": {
+    "PhotoList": [
+      {
+        "id": 1,
+        "cover": "https://images.weserv.nl/?url=img9.doubanio.com/view/photo/s_ratio_poster/public/p2194403556.webp",
+        "name": "空之境界 第五章 矛盾螺旋 劇場版 空の境界 第五章 矛盾螺旋",
+        "score": 8
+      },
+      {
+        "id": 2,
+        "cover": "https://images.weserv.nl/?url=https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2506611957.webp",
+        "name": "死亡笔记 デスノート",
+        "score": 7
+      },
+      {
+        "id": 7,
+        "cover": "https://images.weserv.nl/?url=https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2586167249.webp",
+        "name": "命运之夜——天之杯Ⅲ：春之歌 劇場版 Fate/stay night [Heaven's Feel] III. spring song",
+        "score": 9.1
+      },
+      {
+        "id": 8,
+        "cover": "https://images.weserv.nl/?url=https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2586167249.webp",
+        "name": "命运之夜——天之杯Ⅲ：春之歌 劇場版 Fate/stay night [Heaven's Feel] III. spring song",
+        "score": 8.8
+      },
+      {
+        "id": 9,
+        "cover": "https://images.weserv.nl/?url=https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2621379901.webp",
+        "name": "拆弹专家2",
+        "score": 7.5
+      },
+      {
+        "id": 10,
+        "cover": "https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2535260806.webp",
+        "name": "无双 無雙",
+        "score": 8
+      }
+    ],
+    "weekendList": [
+      {
+        "name": "空之境界 第五章 矛盾螺旋 劇場版 空の境界 第五章 矛盾螺旋"
+      },
+      {
+        "name": "死亡笔记 デスノート"
+      },
+      {
+        "name": "命运之夜——天之杯Ⅲ：春之歌 劇場版 Fate/stay night [Heaven's Feel] III. spring song"
+      },
+      {
+        "name": "命运之夜——天之杯Ⅲ：春之歌 劇場版 Fate/stay night [Heaven's Feel] III. spring song"
+      },
+      {
+        "name": "拆弹专家2"
+      },
+      {
+        "name": "无双 無雙"
+      }
+    ]
+  }
+}

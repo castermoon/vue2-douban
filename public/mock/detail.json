@@ -1,0 +1,88 @@
+{
+  "errno": 0,
+  "data": {
+    "movieData": {
+      "id": 1,
+      "name": "空之境界 第五章 矛盾螺旋 劇場版 空の境界 第五章 矛盾螺旋",
+      "cover": "https://images.weserv.nl/?url=img9.doubanio.com/view/photo/s_ratio_poster/public/p2194403556.webp",
+      "type": "动画",
+      "web": "http://www.karanokyoukai.com/",
+      "country": "日本",
+      "language": "日语",
+      "time": "2008-08-15T16:00:00.000Z",
+      "timeLen": 113,
+      "anotherName": "空之境界电影版5：矛盾螺旋 / Gekijô ban Kara no kyôkai: Dai go shô - Mujun rasen",
+      "indbLink": "tt1278060",
+      "brief": "<p>“荒耶，你在追求什么？”“真正的睿智。”“在哪里追求？”“只在自己的心里。”</p><p>1998年11月，胭条巴遇到了两仪式并被她吸引。胭条巴每晚都做噩梦，自己犯下的罪行不断重现。两仪式为了调查事件的真相，前往胭条巴的寓所，却不知道，他们不知不觉已经进了敌人的圈套——复杂的“矛盾螺旋”。</p><p>而在这一切的背后，是名为荒耶宗莲的男子。他宿命的劲敌是魔术师苍崎橙子，最强的人偶师。伽藍堂全体出动，赌上性命的战斗即将开始。</p><p>日本同人小说最高境界《空之境界》全七章动画化，本作为第五章电影版。</p>",
+      "score": 8,
+      "director": [
+        {
+          "id": 2,
+          "name": "平尾隆之"
+        }
+      ],
+      "author": [
+        {
+          "id": 1,
+          "name": "奈须蘑菇"
+        }
+      ],
+      "toStar": [
+        {
+          "id": 3,
+          "name": "坂本真绫"
+        },
+        {
+          "id": 4,
+          "name": "柿原彻也"
+        }
+      ],
+      "主演": [
+        {
+          "id": 4,
+          "name": "柿原彻也"
+        }
+      ],
+      "commentsCount": {
+        "shortCommentsCount": 15,
+        "longCommentsCount": 10
+      },
+      "movieScore": 7.2,
+      "movieCommentsCount": 12
+    },
+    "maybeLikeList": [
+      {
+        "id": 1,
+        "cover": "https://images.weserv.nl/?url=img9.doubanio.com/view/photo/s_ratio_poster/public/p2194403556.webp",
+        "name": "空之境界 第五章 矛盾螺旋 劇場版 空の境界 第五章 矛盾螺旋"
+      },
+      {
+        "id": 2,
+        "cover": "https://images.weserv.nl/?url=https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2506611957.webp",
+        "name": "死亡笔记 デスノート"
+      },
+      {
+        "id": 7,
+        "cover": "https://images.weserv.nl/?url=https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2586167249.webp",
+        "name": "命运之夜——天之杯Ⅲ：春之歌 劇場版 Fate/stay night [Heaven's Feel] III. spring song"
+      },
+      {
+        "id": 8,
+        "cover": "https://images.weserv.nl/?url=https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2586167249.webp",
+        "name": "命运之夜——天之杯Ⅲ：春之歌 劇場版 Fate/stay night [Heaven's Feel] III. spring song"
+      },
+      {
+        "id": 9,
+        "cover": "https://images.weserv.nl/?url=https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2621379901.webp",
+        "name": "拆弹专家2"
+      }
+    ],
+    "commentScoreObj": {
+      "2": "0.250",
+      "4": "0.167",
+      "6": "0.167",
+      "8": "0.583",
+      "10": "0.667"
+    }
+  }
+}

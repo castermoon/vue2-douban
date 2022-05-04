@@ -1,0 +1,35 @@
+{
+  "errno": 0,
+  "data": {
+    "celebrityData": {
+      "id": 1,
+      "name": "奈须蘑菇",
+      "icon": "https://images.weserv.nl/?url=img2.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1365836929.03.webp",
+      "sex": 1,
+      "constellation": "射手座",
+      "birth": "1973-11-28",
+      "vocation": "编剧",
+      "anotherName": "奈須きのこ",
+      "anotherChineseName": "奈须茸(曾用名)",
+      "indbLink": "nm2195555",
+      "web": "https://www.remus.dti.ne.jp/~takeucto/index.html",
+      "desc": "<p>奈须蘑菇，日本男性脚本家与小说家。由于不公开露面，因此曾因名字的汉字写法惹来性别上的猜测。座右铭为“人类皆强大”，自画像是一颗蘑菇怪物。</p><p>与武内崇为国中同学和好友，两人成立同人团体“TYPE-MOON”，2000年发表游戏《月姬》，奈须负责剧本。2003年商业化成立游戏公司“Notes”（ノーツ）。,2004年发表游戏《Fate/stay night》，同样担任游戏脚本原案。现于讲谈社的“浮士德（ファウスト）”连载小说《DDD》（Decoration Disorder Disconnection）。</p>"
+    },
+    "recentWorksListData": [
+      {
+        "id": 1,
+        "name": "空之境界 第五章 矛盾螺旋 劇場版 空の境界 第五章 矛盾螺旋",
+        "time": "2008-08-15T16:00:00.000Z",
+        "score": 8,
+        "cover": "https://images.weserv.nl/?url=img9.doubanio.com/view/photo/s_ratio_poster/public/p2194403556.webp"
+      },
+      {
+        "id": 7,
+        "name": "命运之夜——天之杯Ⅲ：春之歌 劇場版 Fate/stay night [Heaven's Feel] III. spring song",
+        "time": "2020-08-14T16:00:00.000Z",
+        "score": 9.1,
+        "cover": "https://images.weserv.nl/?url=https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2586167249.webp"
+      }
+    ]
+  }
+}
