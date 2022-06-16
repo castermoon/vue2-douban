@@ -13,19 +13,19 @@
           </div>
           <div class="list-title">
             <span class="list-title-first">一周口碑榜</span>
-            <span class="list-title-second">更多榜单»</span>
+<!--            <span class="list-title-second">更多榜单»</span>-->
           </div>
           <ul class="list">
             <li tag="li" class="list-item" v-for="(item,index) of HomeData.weekendList" :key="item.id"><span class="num">{{index+1}}&nbsp;</span><router-link :to="{path:'detail',query:{movie_id:item.id}}" >{{item.name}}</router-link></li>
           </ul>
         </div>
-        <div class="doulist">
-          <h2 class="doulist-title">热门豆列</h2>
-          <ul>
-            <li class="doulist-item">MOViE木卫：你不应该错过的100部韩国电影</li>
-            <li class="doulist-item">MOViE木卫：你不应该错过的100部韩国电影</li>
-          </ul>
-        </div>
+<!--        <div class="doulist">-->
+<!--          <h2 class="doulist-title">热门豆列</h2>-->
+<!--          <ul>-->
+<!--            <li class="doulist-item">MOViE木卫：你不应该错过的100部韩国电影</li>-->
+<!--            <li class="doulist-item">MOViE木卫：你不应该错过的100部韩国电影</li>-->
+<!--          </ul>-->
+<!--        </div>-->
       </template>
     </base-body>
   <CommonFooter></CommonFooter>

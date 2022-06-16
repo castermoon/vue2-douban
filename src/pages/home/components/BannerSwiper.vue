@@ -2,17 +2,17 @@
   <div class="banner-container">
     <div class="header">
       <span class="title">最近热门电影</span>
-      <ul class="header-list">
-        <li class="header-list-item">热门</li>
-        <li class="header-list-item">最新</li>
-        <li class="header-list-item">豆瓣高分</li>
-        <li class="header-list-item">冷门佳片</li>
-        <li class="header-list-item">华语</li>
-        <li class="header-list-item">欧美</li>
-        <li class="header-list-item">韩国</li>
-        <li class="header-list-item">日本</li>
-      </ul>
-      <div class="more">更多»</div>
+<!--      <ul class="header-list">-->
+<!--        <li class="header-list-item">热门</li>-->
+<!--        <li class="header-list-item">最新</li>-->
+<!--        <li class="header-list-item">豆瓣高分</li>-->
+<!--        <li class="header-list-item">冷门佳片</li>-->
+<!--        <li class="header-list-item">华语</li>-->
+<!--        <li class="header-list-item">欧美</li>-->
+<!--        <li class="header-list-item">韩国</li>-->
+<!--        <li class="header-list-item">日本</li>-->
+<!--      </ul>-->
+<!--      <div class="more">更多»</div>-->
     </div>
     <div class="banner-body">
       <swiper :options="swiperOption">

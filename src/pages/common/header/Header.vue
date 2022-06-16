@@ -16,14 +16,14 @@
           </div>
         </div>
         <ul class="header-body-bottom">
-          <li class="header-body-link">影讯&购票</li>
-          <li class="header-body-link">选电影</li>
-          <li class="header-body-link">电视剧</li>
-          <li class="header-body-link">排行榜 </li>
-          <li class="header-body-link">分类 </li>
-          <li class="header-body-link">影评</li>
-          <li class="header-body-link">2019年度榜单 </li>
-          <li class="header-body-link">2019书影音报告</li>
+<!--          <li class="header-body-link">影讯&购票</li>-->
+<!--          <li class="header-body-link">选电影</li>-->
+<!--          <li class="header-body-link">电视剧</li>-->
+<!--          <li class="header-body-link">排行榜 </li>-->
+<!--          <li class="header-body-link">分类 </li>-->
+<!--          <li class="header-body-link">影评</li>-->
+<!--          <li class="header-body-link">2019年度榜单 </li>-->
+<!--          <li class="header-body-link">2019书影音报告</li>-->
         </ul>
         <div class="header-logo"></div>
       </div>

@@ -2,8 +2,8 @@
   <div class="container">
     <div class="title">
       <span class="hot">正在热映</span>
-      <span class="all-hot">全部正在热映»</span>
-      <span class="soon">即将上映»</span>
+<!--      <span class="all-hot">全部正在热映»</span>-->
+<!--      <span class="soon">即将上映»</span>-->
     </div>
     <div class="photo-container">
       <swiper :options="swiperOption">

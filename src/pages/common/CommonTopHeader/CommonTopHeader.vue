@@ -1,15 +1,15 @@
 <template>
   <div class="Common-Top-header">
-    <ul class="header-left">
-      <li class="header-link"><a href="#">豆瓣</a></li>
-      <li class="header-link"><a href="#">读书</a></li>
-      <li class="header-link"><a href="#">电影</a></li>
-      <li class="header-link"><a href="#">音乐</a></li>
-      <li class="header-link"><a href="#">同城</a></li>
-      <li class="header-link"><a href="#">小组</a></li>
-      <li class="header-link"><a href="#">阅读</a></li>
-      <li class="header-link"><a href="#">FM</a></li>
-    </ul>
+<!--    <ul class="header-left">-->
+<!--      <li class="header-link"><a href="#">豆瓣</a></li>-->
+<!--      <li class="header-link"><a href="#">读书</a></li>-->
+<!--      <li class="header-link"><a href="#">电影</a></li>-->
+<!--      <li class="header-link"><a href="#">音乐</a></li>-->
+<!--      <li class="header-link"><a href="#">同城</a></li>-->
+<!--      <li class="header-link"><a href="#">小组</a></li>-->
+<!--      <li class="header-link"><a href="#">阅读</a></li>-->
+<!--      <li class="header-link"><a href="#">FM</a></li>-->
+<!--    </ul>-->
     <div class="header-right">
       <router-link :to="{path:'notice',query:{user_id:this.$store.state.userInfo.id}}"  v-if="userInfo" class="header-right-link">提醒<span class="noticeActive" v-if="noticeNum > 0">{{noticeNum}}</span></router-link>
       <router-link to="/login" href="#" v-if="!userInfo" class="header-right-link">登录/注册</router-link>
