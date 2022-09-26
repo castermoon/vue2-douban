@@ -12,10 +12,12 @@
               <option value="celebritys">人物</option>
             </select>
             <input class="search-input" placeholder="搜索电影、人物" v-model="searchContent"/>
-            <button class="search-button" @click="handleSearch"></button>
+            <button class="search-button" @click="handleSearch">
+              <span class="search_icon iconfont">&#xe651;</span>
+            </button>
           </div>
         </div>
-        <ul class="header-body-bottom">
+<!--        <ul class="header-body-bottom">-->
 <!--          <li class="header-body-link">影讯&购票</li>-->
 <!--          <li class="header-body-link">选电影</li>-->
 <!--          <li class="header-body-link">电视剧</li>-->
@@ -24,7 +26,7 @@
 <!--          <li class="header-body-link">影评</li>-->
 <!--          <li class="header-body-link">2019年度榜单 </li>-->
 <!--          <li class="header-body-link">2019书影音报告</li>-->
-        </ul>
+<!--        </ul>-->
         <div class="header-logo"></div>
       </div>
     </div>
@@ -109,6 +111,9 @@ export default {
           height 30px
           border-radius 0 5px 5px 0
           background #8d969f
+          .search_icon
+            color #fff
+            font-weight bold
         .select
           border-radius 2px 0 0 2px
           box-shadow 0 1px #ccc

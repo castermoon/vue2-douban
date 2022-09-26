@@ -37,8 +37,8 @@
 
 <script>
 
-import CommonHeader from "@/pages/common/header/Header";
-import CommonFooter from "@/pages/common/footer/Footer";
+import CommonHeader from "@/pages/common/commonHeader/Header";
+import CommonFooter from "@/pages/common/commonFooter/Footer";
 import BaseBody from "@/pages/common/baseBody/BaseBody";
 import axios from 'axios';
 import Star from "@/pages/common/star/Star";

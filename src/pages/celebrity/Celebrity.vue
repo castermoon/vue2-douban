@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import CommonHeader from "@/pages/common/header/Header";
+import CommonHeader from "@/pages/common/commonHeader/Header";
 import axios from "axios"
 import BaseBody from "@/pages/common/baseBody/BaseBody";
 export default {

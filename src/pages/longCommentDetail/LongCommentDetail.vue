@@ -80,8 +80,8 @@
 </template>
 
 <script>
-import CommonHeader from "@/pages/common/header/Header";
-import CommonFooter from "@/pages/common/footer/Footer";
+import CommonHeader from "@/pages/common/commonHeader/Header";
+import CommonFooter from "@/pages/common/commonFooter/Footer";
 import Star from "@/pages/common/star/Star";
 import axios from "axios"
 import BaseBody from "@/pages/common/baseBody/BaseBody";
@@ -97,7 +97,8 @@ export default {
       longCommentDetail:{},
       resResInputContent:"",
       myRespondInputContent:"",
-      isFirstEnterPage:true
+      isFirstEnterPage:true,
+      userInfo:JSON.parse(localStorage.getItem("userInfo")) || null,
     }
   },
   methods:{
@@ -145,8 +146,12 @@ export default {
         alert("没有输入回应内容")
         return
       }
+      if(!this.userInfo){
+        alert("未登录")
+        return;
+      }
       axios.post('/api/longCommentDetail/createLongCommentRes',{
-        user_id:this.$store.state.userInfo.id,
+        user_id:this.userInfo.id,
         longComment_id:this.longCommentDetail.id,
         content:this.myRespondInputContent.trim(),
         scrollTop:document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop,
@@ -164,14 +169,14 @@ export default {
         alert("没有输入回应内容")
         return
       }
-      if(!this.$store.state.userInfo.id){
+      if(!userInfo){
         alert("没有登录")
         return
       }
-      //index表示被回复楼层所在列表的索引。
+      //index表示被回复楼层所在列表的索引,scrollTop为产生的评论距离顶部的高度。
       let scrollTop = this.$refs.respondItemList[index].offsetTop + this.$refs.respondItemList[index].offsetHeight - 200
       axios.post('/api/longCommentDetail/createLongCommentResRes',{
-        user_id:this.$store.state.userInfo.id,
+        user_id:this.userInfo.id,
         longCommentRespond_id:longCommentRes_id,
         longComment_id:this.longCommentDetail.id,
         respond_id:respond_id,

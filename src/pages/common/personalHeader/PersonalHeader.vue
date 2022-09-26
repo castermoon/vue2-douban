@@ -12,10 +12,10 @@
         <li class="nav-item"><a href="#">浏览发现</a></li>
         <li class="nav-item"><a href="#">话题广场</a></li>
       </ul>
-      <div class="search">
-        <input class="search-input" placeholder="搜索你感兴趣的内容或人"/>
-        <button class="search-button">搜</button>
-      </div>
+<!--      <div class="search">-->
+<!--        <input class="search-input" placeholder="搜索你感兴趣的内容或人"/>-->
+<!--        <button class="search-button">搜</button>-->
+<!--      </div>-->
     </div>
   </div>
 </template>
@@ -48,22 +48,22 @@ export default {
         margin-right 30px
         a
           color #007722
-    .search
-      margin-left 200px
-      height 28px
-      display inline-block
-      color #eee
-      vertical-align bottom
-      position relative
-      .search-input
-        width 280px
-        line-height 28px
-      .search-button
-        background #fff
-        cursor pointer
-        right 0
-        top 0
-        position absolute
-        width 30px
-        height 28px
+    //.search
+    //  margin-left 200px
+    //  height 28px
+    //  display inline-block
+    //  color #eee
+    //  vertical-align bottom
+    //  position relative
+    //  .search-input
+    //    width 280px
+    //    line-height 28px
+    //  .search-button
+    //    background #fff
+    //    cursor pointer
+    //    right 0
+    //    top 0
+    //    position absolute
+    //    width 30px
+    //    height 28px
 </style>

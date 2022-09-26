@@ -33,25 +33,7 @@
               </label>
             </div>
             <ul class="comment-list">
-              <li class="comment-list-item" v-for="item of commentList" :key="item.id">
-                <!--                  <div class="icon-wrapper"><img :src="item.icon"/></div>-->
-                <div class="comment-desc">
-                  <div class="comment-desc-header">
-                    <img class="icon" src="https://img2.doubanio.com/icon/u155190344-21.jpg">
-                    <div class="name"><a href="#">{{item.nickname}}</a></div>
-                    <span v-if="item.score > 0">看过</span>
-                    <span v-if="item.score === 0">想看</span>
-                    <div class="star-wrapper" v-if="item.score > 0">
-                      <star :score="item.score" ></star>
-                    </div>
-                    <span class="date">{{item.date | timestampChange}}</span>
-                    <!--                      <div class="useful">{{item.usefulCount}}<a href="#">有用</a></div>-->
-                  </div>
-                  <div class="comment-content">
-                    {{item.content }}
-                  </div>
-                </div>
-              </li>
+              <CommentItem :comment="item" :key="item.id" v-for="item of commentList"/>
             </ul>
           </div>
         </div>
@@ -67,21 +49,27 @@
 </template>
 
 <script>
-import CommonHeader from "@/pages/common/header/Header";
+import CommonHeader from "@/pages/common/commonHeader/Header";
 import Star from "@/pages/common/star/Star";
-import CommonFooter from "@/pages/common/footer/Footer";
+import CommonFooter from "@/pages/common/commonFooter/Footer";
 import axios from "axios"
 import Pagination from "@/pages/common/pagination/Pagination";
 import MovieCommentWindow from "@/pages/common/movieCommentWindow/MovieCommentWindow";
 import CommonMovieData from "@/pages/common/commonMovieData/CommonMovieData";
 import BaseBody from "@/pages/common/baseBody/BaseBody";
+import CommentItem from "@/pages/common/commentItem/CommentItem";
 export default {
   name: "ShortComments",
-  components: {BaseBody, CommonMovieData, MovieCommentWindow, Pagination, CommonFooter, Star, CommonHeader},
+  components: {CommentItem, BaseBody, CommonMovieData, MovieCommentWindow, Pagination, CommonFooter, Star, CommonHeader},
   data(){
     return{
       CommentsMovieData:{},
       commentList:[],
+    }
+  },
+  watch:{
+    $route(){
+      this.getShortComInfo()
     }
   },
   filters: {
@@ -100,15 +88,10 @@ export default {
     }
   },
   methods:{
-    // switchTab(value){
-    //   this.$route.query.isLook = parseInt(value)
-    //   this.getShortComInfo()
-    // },
     getShortComInfo () {
+      // console.log('/api/comments/'+ this.$route.query.movie_id + '/' + this.$route.query.page + "/" + this.$route.query.commentType)
       axios.get('/api/comments/'+ this.$route.query.movie_id + '/' + this.$route.query.page + "/" + this.$route.query.commentType,{
       }).then(this.getShortComInfoSucc)
-      // axios.get('/api/shortComments.json/',{
-      // }).then(this.getShortComInfoSucc)
     },
     getShortComInfoSucc (res) {
       res = res.data

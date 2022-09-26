@@ -39,7 +39,8 @@
                 <div class="tip">提示：评论里有关键情节透露</div>
                 <div class="link"><a href="#">>没关系，可以显示全文</a></div>
               </div>
-              <p class="comment-content" v-if="true" v-text="substrByByte(item.content,225)">
+              <p class="comment-content multilineEllipsis">
+                {{item.content}}
               </p>
             </div>
           </li>
@@ -56,7 +57,7 @@
 import CommonTopHeader from "@/pages/common/CommonTopHeader/CommonTopHeader";
 import CommonTitle from "@/pages/common/commonTitle/CommonTitle";
 import Star from "@/pages/common/star/Star";
-import CommonFooter from "@/pages/common/footer/Footer";
+import CommonFooter from "@/pages/common/commonFooter/Footer";
 import axios from "axios"
 import PersonalHeader from "@/pages/common/personalHeader/PersonalHeader";
 import BaseBody from "@/pages/common/baseBody/BaseBody";
@@ -70,21 +71,6 @@ export default {
     }
   },
   methods:{
-    substrByByte(str, num){
-      let bytesCount = 0;
-      for (let i = 0; i < str.length; i++) {
-        let c = str.charAt(i);
-        if (/^[\u0000-\u00ff]$/.test(c)) {
-          bytesCount += 1;
-        } else {
-          bytesCount += 2;
-        }
-        if (bytesCount > num) {
-          return str.substr(0, i) + ' ...'
-        }
-      }
-      return str
-    },
     getPersonalInfo () {
       axios.get('/api/personal/'+ this.$route.query.user_id,{
       }).then(this.getPersonalInfoSucc)
@@ -105,6 +91,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import "~@/assets/style/mixins.styl"
 
 .personal-info
   width 100%
@@ -154,9 +141,7 @@ export default {
         .tip
           margin-bottom 32px
       .comment-content
-        height 67px
         width 100%
-        line-height 20px
     .star-wrapper
       width 65px
       display inline-block

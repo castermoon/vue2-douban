@@ -32,20 +32,28 @@ export default {
       commentTitle:"",
       commentContent:"",
       score: 0,
-      spoiler:0
+      spoiler:0,
+      userInfo:JSON.parse(localStorage.getItem("userInfo")) || null
     }
   },
   methods: {
     commentPublish () {
+      if(!this.userInfo){
+        alert("未登录")
+        return
+      }
       axios.post('/api/longComments/createLongComment',{
         movieId:this.$route.query.movie_id,
+        //这里是为了让content在存入数据库时保留空格和换行。
         content:this.commentContent.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' '),
         score:parseInt(this.score) * 2,
-        userId:this.$store.state.userInfo.id,
+        userId:this.userInfo.id,
         title:this.commentTitle,
         spoiler:this.spoiler
-      }).then(()=>{
-        this.$router.back()
+      }).then((res)=>{
+        this.$router.push({
+          name: "LongCommentDetail", query: { longComment_id: res.data.data.res.id }
+        })
       })
     },
   },

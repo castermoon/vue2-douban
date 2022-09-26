@@ -47,9 +47,27 @@
         <common-title :title="'喜欢这部电影的人也喜欢'" ></common-title>
         <photo-box :photoBox="maybeLikeList" :height="'163px'"></photo-box>
         <common-title :title="movieData.name + '的短评'" :content="`全部 ${movieData.commentsCount} 条`"  :link="{path:'shortComments',query:{movie_id:movieData.id,page:'1',commentType:'all'}}"></common-title>
+        <ul>
+          <CommentItem :comment="item" :key="item.id" v-for="item of recentCommentList"/>
+        </ul>
         <common-title :title="movieData.name + '的长评'" :content="`全部 ${movieData.longCommentsCount} 条`" :link="{path:'longComments',query:{movie_id:movieData.id,page:'1'}}"></common-title>
+        <ul>
+          <LongCommentItem :longComment="item" :key="item.id" v-for="item of recentLongCommentList"/>
+        </ul>
       </template>
-      <template slot="base-body-right"></template>
+      <template slot="base-body-right">
+        <div class="movie_list_recommend">
+          <CommonTitle title="'以下片单推荐'"/>
+            <ul class="recommend_list">
+              <li class="recommend_item">豆瓣电影【口碑榜】2022-06-13 更新 (影志)</li>
+              <li class="recommend_item">评价人数超过十万的电影 (依然饭特稀)</li>
+              <li class="recommend_item">一个人的电影院 (刺青童)</li>
+              <li class="recommend_item">2022—2024值得关注的华语电影 (closer)</li>
+              <li class="recommend_item">豆瓣电影【口碑榜】2022-06-13 更新 (影志)</li>
+              <li class="recommend_item">豆瓣评价人数过十万的影片〖国产篇〗 (莉莉周)</li>
+            </ul>
+        </div>
+      </template>
     </base-body>
     <movie-comment-window ref="shortCommentWindow" :movieId="movieData.id" v-if="movieData.id"></movie-comment-window>
     <common-footer></common-footer>
@@ -57,34 +75,43 @@
 </template>
 
 <script>
-import CommonHeader from "@/pages/common/header/Header";
+import CommonHeader from "@/pages/common/commonHeader/Header";
 import Star from "@/pages/common/star/Star";
 import RatingPercent from "@/pages/common/RatingPercent/RatingPercent";
-import CommonFooter from "@/pages/common/footer/Footer";
+import CommonFooter from "@/pages/common/commonFooter/Footer";
 import PhotoBox from "@/pages/detail/components/PhotoBox";
 import CommonTitle from "@/pages/common/commonTitle/CommonTitle";
 import axios from "axios"
 import MovieCommentWindow from "@/pages/common/movieCommentWindow/MovieCommentWindow";
 import BaseBody from "@/pages/common/baseBody/BaseBody";
 import CommonLabel from "@/pages/common/commonLabel/CommonLabel";
+import CommentItem from "@/pages/common/commentItem/CommentItem";
+import LongCommentItem from "@/pages/common/longCommentItem/LongCommentItem";
 export default {
   name: "Detail",
   components: {
+    LongCommentItem,
+    CommentItem,
     CommonLabel,
     BaseBody, MovieCommentWindow, CommonTitle, PhotoBox, CommonFooter, RatingPercent, Star, CommonHeader},
   data(){
     return{
       maybeLikeList:[],
       movieData:{},
-      commentScoreObj:{}
+      commentScoreObj:{},
+      recentCommentList:[],
+      recentLongCommentList:[]
+    }
+  },
+  watch:{
+    $route(){
+      this.getDetailInfo()
     }
   },
   methods: {
     getDetailInfo () {
       axios.get('/api/detail/'+ this.$route.query.movie_id,{
       }).then(this.getDetailInfoSucc)
-      // axios.get('/api/detail.json',{
-      // }).then(this.getDetailInfoSucc)
     },
     getDetailInfoSucc (res) {
       res = res.data
@@ -93,6 +120,8 @@ export default {
         this.maybeLikeList = data.maybeLikeList
         this.movieData= data.movieData
         this.commentScoreObj = data.commentScoreObj
+        this.recentCommentList = data.recentCommentList
+        this.recentLongCommentList = data.recentLongCommentList
       }
     },
     writeShortComment(){
@@ -167,4 +196,14 @@ export default {
   text-indent 2em
   font-size 13px
   line-height 20px
+.movie_list_recommend
+  margin-bottom: 40px;
+  line-height 22px
+ .recommend_list
+   border-top: 1px dashed #DDD;
+   .recommend_item
+     padding: 4.5px 0;
+     border-bottom: 1px dashed #DDD;
+     color #3377AA
+     font-size 13px
 </style>

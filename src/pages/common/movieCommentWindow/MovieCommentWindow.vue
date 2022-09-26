@@ -56,7 +56,8 @@ export default {
       shortCommentContent:"",
       onlyMe:0,
       isShare:1,
-      status:1
+      status:1,
+      userInfo:JSON.parse(localStorage.getItem("userInfo")) || null,
     }
   },
   methods: {
@@ -74,9 +75,13 @@ export default {
       })
     },
     saveShortComment(){
+      if(!this.userInfo){
+        alert("未登录")
+        return
+      }
       axios.post('/api/comments/createComment',{
         movieId:this.movieId,
-        userId:this.$store.state.userInfo.id,
+        userId:this.userInfo.id,
         content:this.shortCommentContent,
         score:parseInt(this.score) * 2,
         status:this.status,

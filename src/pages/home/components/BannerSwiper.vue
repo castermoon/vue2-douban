@@ -2,17 +2,17 @@
   <div class="banner-container">
     <div class="header">
       <span class="title">最近热门电影</span>
-<!--      <ul class="header-list">-->
-<!--        <li class="header-list-item">热门</li>-->
-<!--        <li class="header-list-item">最新</li>-->
-<!--        <li class="header-list-item">豆瓣高分</li>-->
-<!--        <li class="header-list-item">冷门佳片</li>-->
-<!--        <li class="header-list-item">华语</li>-->
-<!--        <li class="header-list-item">欧美</li>-->
-<!--        <li class="header-list-item">韩国</li>-->
-<!--        <li class="header-list-item">日本</li>-->
-<!--      </ul>-->
-<!--      <div class="more">更多»</div>-->
+      <ul class="header-list">
+        <li
+            v-for="(item,index) of typeList"
+            class="header-list-item"
+            :key="index"
+            @click="$emit('getMovieList',dataType,item)"
+        >
+          {{item}}
+        </li>
+      </ul>
+      <div class="more">更多»</div>
     </div>
     <div class="banner-body">
       <swiper :options="swiperOption">
@@ -20,6 +20,9 @@
           <router-link :to="{path:'detail',query:{movie_id:item.id}}" tag="div" class="item" v-for="item of page" :key="item.id">
             <div class="icon"><img :src="item.cover"/></div>
             <div class="name">{{item.name}}</div>
+            <div class="tip_wrapper">
+              <Tip :movieItem="item" />
+            </div>
           </router-link>
         </swiper-slide>
         <div class="swiper-pagination"  slot="pagination"></div>
@@ -31,13 +34,29 @@
 </template>
 
 <script>
+import Tip from "@/pages/common/tip/Tip";
 export default {
   name: "BannerSwiper",
+  components: {Tip},
   props:{
-    bannerList:{
+    movieList:{
       type:Array,
       default(){
         return[]
+      }
+    },
+    title:{
+      type:String,
+      default:"",
+    },
+    dataType:{
+      type:String,
+      default:""
+    },
+    typeList:{
+      type:Array,
+      default() {
+        return [];
       }
     }
   },
@@ -56,7 +75,7 @@ export default {
   computed: {
     pages() {
       let pages = []
-      this.bannerList.forEach((item,index)=>{
+      this.movieList.forEach((item,index)=>{
         let page = Math.floor(index / 10)
         if (!pages[page]){
           pages[page] = []
@@ -85,9 +104,12 @@ export default {
 .swiper-button-next
   right 40%
   background-position right
+.swiper-slide
+  visibility hidden
+.swiper-slide-active
+  visibility visible
 .banner-container
   margin-top 30px
-  overflow hidden
   .header
     height 40px
     line-height 40px
@@ -101,6 +123,7 @@ export default {
       .header-list-item
         float left
         color #9B9B9B
+        cursor pointer
         font-size 12px
         margin-right 12px
     .more
@@ -114,8 +137,11 @@ export default {
       margin-right 35px
       width 115px
       height 210px
+      position relative
       &:nth-child(5n)
         margin-right 0
+      &:hover .tip_wrapper
+        display block
       .icon
         width 115px
         height 161px
@@ -128,5 +154,8 @@ export default {
         height 40px
         line-height 40px
         color #258dcd
+      .tip_wrapper
+        display none
+
 
 </style>

@@ -11,7 +11,7 @@
 <!--      <li class="header-link"><a href="#">FM</a></li>-->
 <!--    </ul>-->
     <div class="header-right">
-      <router-link :to="{path:'notice',query:{user_id:this.$store.state.userInfo.id}}"  v-if="userInfo" class="header-right-link">提醒<span class="noticeActive" v-if="noticeNum > 0">{{noticeNum}}</span></router-link>
+      <router-link :to="{path:'notice'}"  v-if="userInfo" class="header-right-link">提醒<span class="noticeActive" v-if="noticeNum > 0">{{noticeNum}}</span></router-link>
       <router-link to="/login" href="#" v-if="!userInfo" class="header-right-link">登录/注册</router-link>
       <div class="drop-down-menu" v-else>
         <a class="drop-down-menu-btn" @click="dropMenuBtnClick" >{{userInfo.nickname}}的账号</a>
@@ -31,7 +31,7 @@ export default {
   data(){
     return{
       dropMenuShow:false,
-      userInfo:null,
+      userInfo:JSON.parse(localStorage.getItem("userInfo")) || null,
       noticeNum:0
     }
   },
@@ -39,24 +39,11 @@ export default {
     dropMenuBtnClick(){
       this.dropMenuShow = !this.dropMenuShow
     },
-    isLogin(){
-      axios.get('/api/user/loginCheck',{
-      }).then((res) => {
-        res = res.data
-        if(res.errno == 0){
-          this.userInfo = res.data
-          this.$store.commit('changeUserInfo',this.userInfo )
-        }
-      }).catch((err) => {
-        console.log(err)
-      })
-    },
     logoutBtnClick(){
       axios.get('/api/user/logout',{
       }).then((res) => {
         if(res.data.errno == 0){
-          this.userInfo = null
-          this.$store.commit('changeUserInfo',this.userInfo )
+          localStorage.setItem("userInfo",JSON.stringify(null))
           this.$router.push({
             name: "Login"
           })
@@ -66,10 +53,10 @@ export default {
       })
     },
     getNoticeNum(){
-      if(!this.$store.state.userInfo){
+      if(!this.userInfo){
         return
       }
-      if(this.$store.state.userInfo.id){
+      if(this.userInfo){
         axios.get('/api/user/notice',{
         }).then((res) => {
           if(res.data.errno == 0){
@@ -81,10 +68,7 @@ export default {
       }
     }
   },
-  created(){
-    this.isLogin()
-  },
-  updated: function () {
+  created() {
     this.getNoticeNum()
   }
 }

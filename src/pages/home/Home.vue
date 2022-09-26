@@ -3,8 +3,23 @@
     <common-header></common-header>
     <base-body>
       <template slot="base-body-left">
-        <photo-list :PhotoList="HomeData.PhotoList"></photo-list>
-        <banner-swiper :bannerList="HomeData.PhotoList"></banner-swiper>
+        <photo-list :movieList="isShowingMovieList"/>
+        <banner-swiper
+            :title="'最近热门电影'"
+            :movieList="hotMovieList"
+            :typeList="typeList"
+            :dataType="'hotMovie'"
+            @getMovieList="getMovieList"
+        ></banner-swiper>
+        <banner-swiper
+            :title="'最近热门电视剧'"
+            :movieList="hotTVList"
+            :typeList="typeList"
+            :dataType="'hotTV'"
+            @getMovieList="getMovieList"
+        ></banner-swiper>
+        <hot-recommend/>
+        <PopularComments :popularCommentList="popularCommentList" v-if="popularCommentList.length"/>
       </template>
       <template slot="base-body-right">
         <div class="weekend-list">
@@ -16,16 +31,16 @@
 <!--            <span class="list-title-second">更多榜单»</span>-->
           </div>
           <ul class="list">
-            <li tag="li" class="list-item" v-for="(item,index) of HomeData.weekendList" :key="item.id"><span class="num">{{index+1}}&nbsp;</span><router-link :to="{path:'detail',query:{movie_id:item.id}}" >{{item.name}}</router-link></li>
+            <li tag="li" class="list-item" v-for="(item,index) of weekendList" :key="item.id"><span class="num">{{index+1}}&nbsp;</span><router-link :to="{path:'detail',query:{movie_id:item.id}}" >{{item.name}}</router-link></li>
           </ul>
         </div>
-<!--        <div class="doulist">-->
-<!--          <h2 class="doulist-title">热门豆列</h2>-->
-<!--          <ul>-->
-<!--            <li class="doulist-item">MOViE木卫：你不应该错过的100部韩国电影</li>-->
-<!--            <li class="doulist-item">MOViE木卫：你不应该错过的100部韩国电影</li>-->
-<!--          </ul>-->
-<!--        </div>-->
+        <div class="doulist">
+          <h2 class="doulist-title">热门豆列</h2>
+          <ul>
+            <li class="doulist-item">英国历史</li>
+            <li class="doulist-item">黑暗系日影日剧，专治各种鸡汤病</li>
+          </ul>
+        </div>
       </template>
     </base-body>
   <CommonFooter></CommonFooter>
@@ -33,19 +48,27 @@
 </template>
 
 <script>
-import CommonHeader from "@/pages/common/header/Header";
+import CommonHeader from "@/pages/common/commonHeader/Header";
 import PhotoList from "@/pages/home/components/PhotoList";
 import BannerSwiper from "@/pages/home/components/BannerSwiper";
-import CommonFooter from "@/pages/common/footer/Footer";
+import CommonFooter from "@/pages/common/commonFooter/Footer";
 import axios from "axios"
 import BaseBody from "@/pages/common/baseBody/BaseBody";
+import HotRecommend from "@/pages/home/components/HotRecommend";
+import PopularComments from "@/pages/home/components/PopularComments";
+
 
 export default {
   name: "Home",
-  components: {BaseBody, CommonFooter, BannerSwiper, PhotoList, CommonHeader},
+  components: {PopularComments, HotRecommend, BaseBody, CommonFooter, BannerSwiper, PhotoList, CommonHeader},
   data(){
     return{
-      HomeData:{},
+      weekendList:[],
+      hotMovieList:[],
+      isShowingMovieList:[],
+      hotTVList:[],
+      popularCommentList:[],
+      typeList:["所有","中国","日本","美国","韩国"]
     }
   },
   methods: {
@@ -58,8 +81,24 @@ export default {
     },
     getHomeInfoSucc (res) {
       if(res.data.errno == 0){
-        this.HomeData = res.data.data
+        this.weekendList = res.data.data.weekendList
+        this.hotMovieList = res.data.data.hotMovieList
+        this.isShowingMovieList = res.data.data.isShowingMovieList
+        this.hotTVList = res.data.data.hotTVList
+        this.popularCommentList = res.data.data.popularCommentList
       }
+    },
+    getMovieList(dataName,country){
+      axios.post(`/api/home/getHomeMovieData`,{
+        country:country
+      }).then((res)=>{
+        const data = res.data.data
+        if(dataName === "hotMovie"){
+          this.hotMovieList = data.dataList
+        }else if(dataName === "hotTV"){
+          this.hotTVList = data.dataList
+        }
+      })
     }
   },
   created () {

@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import CommonHeader from "@/pages/common/header/Header";
-import CommonFooter from "@/pages/common/footer/Footer";
+import CommonHeader from "@/pages/common/commonHeader/Header";
+import CommonFooter from "@/pages/common/commonFooter/Footer";
 import PhotoSwiper from "@/pages/photo/components/PhotoSwiper";
 import axios from "axios"
 export default {

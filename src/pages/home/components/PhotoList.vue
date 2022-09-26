@@ -2,8 +2,6 @@
   <div class="container">
     <div class="title">
       <span class="hot">正在热映</span>
-<!--      <span class="all-hot">全部正在热映»</span>-->
-<!--      <span class="soon">即将上映»</span>-->
     </div>
     <div class="photo-container">
       <swiper :options="swiperOption">
@@ -13,6 +11,9 @@
             <div class="name">{{item.name}}</div>
             <div class="star-wrapper"><star :score="item.score"></star><span class="score">{{item.score}}</span></div>
             <div class="button">选座购票</div>
+            <div class="tip_wrapper">
+              <Tip :movieItem="item"/>
+            </div>
           </router-link>
         </swiper-slide>
         <div class="swiper-pagination"  slot="pagination"></div>
@@ -25,17 +26,18 @@
 
 <script>
 import Star from "@/pages/common/star/Star";
+import Tip from "@/pages/common/tip/Tip";
 export default {
   name: "PhotoList",
   props:{
-    PhotoList: {
+    movieList: {
       type: Array,
       default(){
         return []
       }
     }
   },
-  components: {Star},
+  components: {Tip, Star},
   data(){
     return{
       swiperOption:{
@@ -51,7 +53,7 @@ export default {
   computed: {
     pages() {
       let pages = []
-      this.PhotoList.forEach((item,index)=>{
+      this.movieList.forEach((item,index)=>{
         let page = Math.floor(index / 5)
         if (!pages[page]){
           pages[page] = []
@@ -84,8 +86,11 @@ export default {
 .swiper-button-prev
   left 675px
   background-position left
+.swiper-slide
+  visibility hidden
+.swiper-slide-active
+  visibility visible
 .container
-  overflow hidden
   .title
     height 50px
     width 100%
@@ -94,21 +99,17 @@ export default {
     .hot
       margin-right 15px
       font-size 16px
-    .all-hot
-      margin-right 15px
-      color #258dcd
-      font-size 14px
-    .soon
-      color #258dcd
-      font-size 14px
   .photo-container
     padding-top 18px
     .item
       display inline-block
       margin-right 35px
       width 115px
+      position relative
       &:last-child
         margin-right 0
+      &:hover .tip_wrapper
+        display block
       .icon
         width 115px
         height 161px
@@ -141,4 +142,6 @@ export default {
         line-height 25px
         background #258dcd
         text-align center
+      .tip_wrapper
+        display none
 </style>

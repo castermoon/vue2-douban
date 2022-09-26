@@ -8,24 +8,10 @@
 <!--          <li class="top-tab-item" ><a href="javascript:void(0)" :class="{active:false}">最新发布的</a></li>/-->
 <!--          <li class="top-tab-item" ><a href="javascript:void(0)" :class="{active:false}">我关注的</a></li>/-->
 <!--          <li class="top-tab-item" ><a href="javascript:void(0)" :class="{active:false}">按评星查看</a></li>-->
-          <router-link :to="{path:'writeLongComment',query:{movie_id:this.CommentsMovieData.id}}" tag="li" class="write-Long-comment" @click="writeLongComment">我来写评论</router-link>
+          <router-link :to="{path:'writeLongComment',query:{movie_id:this.CommentsMovieData.id}}" tag="li" class="write-Long-comment" >我来写评论</router-link>
         </ul>
         <ul class="long-comments-list">
-          <li class="long-comments-list-item" v-for="item of longCommentList" :key="item.id">
-            <div class="long-comments-list-item-header">
-              <img class="icon" src="https://img2.doubanio.com/icon/u155190344-21.jpg">
-              <div class="name"><a href="#">{{ item.nickname }}</a></div>
-              <div class="star-wrapper"><star :score="item.score"></star></div>
-              <div class="date">{{ item.date | timestampChange }}</div>
-            </div>
-            <router-link :to="{path:'longCommentDetail',query:{longComment_id: item.id}}" class="long-comments-list-item-title">
-              {{ item.title }}</router-link>
-            <!--            <router-link><a class="long-comments-list-item-title"> 在我学电影之初呢，其实就有前辈一直告诫我</a></router-link>-->
-            <div class="Spoiler" v-if="item.spoiler">| 这篇影评可能有剧透</div>
-            <p class="long-comments-list-item-content">
-              {{ item.content }}
-            </p>
-          </li>
+          <LongCommentItem v-for="item of longCommentList" :key="item.id" :longComment="item"/>
         </ul>
         <pagination :pageName="'LongComments'"></pagination>
       </template>
@@ -38,16 +24,17 @@
 </template>
 
 <script>
-import CommonHeader from "@/pages/common/header/Header";
+import CommonHeader from "@/pages/common/commonHeader/Header";
 import Star from "@/pages/common/star/Star";
-import CommonFooter from "@/pages/common/footer/Footer";
+import CommonFooter from "@/pages/common/commonFooter/Footer";
 import axios from "axios"
 import Pagination from "@/pages/common/pagination/Pagination";
 import BaseBody from "@/pages/common/baseBody/BaseBody";
 import CommonMovieData from "@/pages/common/commonMovieData/CommonMovieData";
+import LongCommentItem from "@/pages/common/longCommentItem/LongCommentItem";
 export default {
   name: "LongComments",
-  components: {CommonMovieData, BaseBody, Pagination, CommonFooter, Star, CommonHeader},
+  components: {LongCommentItem, CommonMovieData, BaseBody, Pagination, CommonFooter, Star, CommonHeader},
   data(){
     return{
       CommentsMovieData:{},
@@ -77,9 +64,7 @@ export default {
         this.CommentsMovieData = data.CommentsMovieData
         this.longCommentList= data.longCommentList
       }
-    },
-    writeLongComment(){
-    },
+    }
   },
   filters: {
     timestampChange(timestamp) {

@@ -26,12 +26,17 @@ export default {
   components: {BaseBody, PersonalHeader, CommonTopHeader},
   data(){
     return{
-      noticeList:[]
+      noticeList:[],
+      userInfo:JSON.parse(localStorage.getItem("userInfo")) || null
     }
   },
   methods:{
     getNoticeInfo () {
-      axios.get('/api/notice/' + this.$route.query.user_id, {
+      if(!this.userInfo){
+        alert("未登录")
+        return
+      }
+      axios.get('/api/notice/' + this.userInfo.id, {
       }).then(this.getNoticeInfoSucc)
     },
     getNoticeInfoSucc (res) {

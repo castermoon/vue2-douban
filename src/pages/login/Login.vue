@@ -46,13 +46,13 @@ export default {
     }
   },
   computed:{
-    dateRange() {
+    dataRange() {
       const {username, password, registerName,registerPassword} = this;
       return {username, password,registerName,registerPassword}
     }
   },
   watch:{
-    dateRange(){
+    dataRange(){
       if((this.username && this.password) || (this.registerName && this.registerPassword)){
         this.submitActive = true
       }else {
@@ -89,12 +89,14 @@ export default {
       })
     },
     loginSucc(res){
-      if(!res.data.data){
-        return
+      if(res.data.errno === 0){
+        localStorage.setItem("userInfo",JSON.stringify(res.data.data.data))
+        this.$router.push({
+          name: "Personal", query: { user_id: res.data.data.data.id }
+        })
+      }else {
+        alert(res.data.message)
       }
-      this.$router.push({
-        name: "Personal", query: { user_id: res.data.data.id }
-      })
     },
     registerSucc(res){
       if(res.data.errno == 0){
